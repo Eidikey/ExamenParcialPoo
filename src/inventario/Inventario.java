@@ -4,44 +4,47 @@ import modelo.Producto;
 import java.util.ArrayList;
 
 public class Inventario {
-    private ArrayList<Producto> productos;
+    private ArrayList<Producto> listaDeProductos;
 
     public Inventario() {
-        this.productos = new ArrayList<>();
+        this.listaDeProductos = new ArrayList<>();
     }
 
-    public void agregarProducto(Producto p) {
-        productos.add(p);
+    public void agregarProducto(Producto nuevoProducto) {
+        listaDeProductos.add(nuevoProducto);
     }
 
-    public Producto buscarProducto(String criterio) {
-        for (int i = 0; i < productos.size(); i++) {
-            Producto p = productos.get(i);
-            if (p.getId().equalsIgnoreCase(criterio) || p.getNombre().equalsIgnoreCase(criterio)) {
-                return p;
+    public Producto buscarProducto(String criterioDeBusqueda) {
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            Producto productoEncontrado = listaDeProductos.get(i);
+            if (productoEncontrado.getId().equalsIgnoreCase(criterioDeBusqueda) || 
+                productoEncontrado.getNombre().equalsIgnoreCase(criterioDeBusqueda)) {
+                return productoEncontrado;
             }
         }
         return null;
     }
 
     public void mostrarTodos() {
-        for (int i = 0; i < productos.size(); i++) {
-            productos.get(i).mostrarInformacion();
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            Producto productoAVisualizar = listaDeProductos.get(i);
+            productoAVisualizar.mostrarInformacion();
         }
     }
 
     public double calcularValorTotal() {
-        double total = 0;
-        for (int i = 0; i < productos.size(); i++) {
-            total += productos.get(i).calcularPrecioFinal();
+        double montoTotalAcumulado = 0;
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            Producto productoParaSumar = listaDeProductos.get(i);
+            montoTotalAcumulado += productoParaSumar.calcularPrecioFinal();
         }
-        return total;
+        return montoTotalAcumulado;
     }
 
-    public void actualizarExistencias(String id, int nuevaCantidad) {
-        Producto p = buscarProducto(id);
-        if (p != null) {
-            p.setCantidadDisponible(nuevaCantidad);
+    public void actualizarExistencias(String idBuscado, int nuevaCantidadStock) {
+        Producto productoAActualizar = buscarProducto(idBuscado);
+        if (productoAActualizar != null) {
+            productoAActualizar.setCantidadDisponible(nuevaCantidadStock);
         }
     }
 }
