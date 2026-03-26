@@ -17,7 +17,7 @@ public abstract class Producto {
 
   public abstract void mostrarInformacion();
 
-  // Getters y Setters con validaciones (Encapsulamiento)
+  // Getters y Setters
   public String getId() {
     return id;
   }

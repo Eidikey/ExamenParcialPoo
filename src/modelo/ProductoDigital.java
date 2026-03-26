@@ -4,8 +4,7 @@ public class ProductoDigital extends Producto {
   private double tamanoMB;
   private double porcentajeLicencia;
 
-  public ProductoDigital(String id, String nombre, double precioBase, int cantidadDisponible, double tamanoMB,
-      double porcentajeLicencia) {
+  public ProductoDigital(String id, String nombre, double precioBase, int cantidadDisponible, double tamanoMB, double porcentajeLicencia) {
     super(id, nombre, precioBase, cantidadDisponible);
     setTamanoMB(tamanoMB);
     this.porcentajeLicencia = porcentajeLicencia;
@@ -28,6 +27,7 @@ public class ProductoDigital extends Producto {
     System.out.println("---------------------------");
   }
 
+  // Getter y setter
   public double getTamanoMB() {
     return tamanoMB;
   }

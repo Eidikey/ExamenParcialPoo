@@ -4,8 +4,7 @@ public class ProductoFisico extends Producto {
   private double peso;
   private double costoEnvio;
 
-  public ProductoFisico(String id, String nombre, double precioBase, int cantidadDisponible, double peso,
-      double costoEnvio) {
+  public ProductoFisico(String id, String nombre, double precioBase, int cantidadDisponible, double peso, double costoEnvio) {
     super(id, nombre, precioBase, cantidadDisponible);
     setPeso(peso);
     setCostoEnvio(costoEnvio);
@@ -28,6 +27,7 @@ public class ProductoFisico extends Producto {
     System.out.println("---------------------------");
   }
 
+  // Getters y setters
   public double getPeso() {
     return peso;
   }
